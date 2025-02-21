@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="spill.css">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        .gridContainer {
+            display: grid;
+            grid-template-columns: auto auto auto;
+            grid-template-rows: ;
+            grid-gap: 10px;
+            padding: 10px;
+            background-color: #2196F3;
+            color: white;
+        }
+
+        h1 {
+            font-size: 24px;
+        }
+
+        p {
+            font-size: 18px;
+        }
+    </style>
+</head>
+<body>
+
+        <div class="gridContainer">
+            <div>
+                <h1>Wanted spill</h1>
+                <p>klikk på emojien som er Wanted</p>
+            </div>
+            <div>
+                <p>klikk på denne emojien:</p>
+                <p>👨</p>
+            </div>
+            <div id="spillBrett"></div>
+        </div>
+
+
+
+    <script src="spill.js"></script>
+</body>
+</html>
