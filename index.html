@@ -4,259 +4,52 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>BallSprett</title>
-    <style>
-        * {
-            margin: 0;
-            padding: 0;
-            box-sizing: border-box;
-        }
-
-        :root {
-            --MørkGrønn--: #214E34;
-            --Grønn--: #A1CDA8;
-            --LysGrønn--: #B5DFCA;
-            --VeldigLysGrønn--: #C5E7E2;
-            --Blå--: #337CA0;
-        }
-
-        body {
-            height: 100vh;
-            margin: 0;
-            /* Overflow hidden gjør at vi unngår scrollbars når 
-               ballen er så vidt utenfor skjermen*/
-            overflow: hidden;
-        }
-
-        .ball {
-            width: 200px;
-            height: 200px;
-            /* MERK: Vi må sette en height for at offsetHeight skal fungere */
-            position: absolute;
-            left: 50px;
-            top: 50px
-        }
-
-        .gridContainer {
-            display: grid;
-            grid-template-columns: 20% 80%;
-            grid-template-rows: 20% 70% 10%;
-            height: 100vh;
-            /* Full høyde på skjermen */
-        }
-
-        .topVenstre {
-            grid-column: 1;
-            grid-row: 1;
-            background-color: var(--Grønn--);
-            border: 3px solid var(--Blå--);
-        }
-
-        .bunVenstre {
-            grid-column: 1;
-            grid-row: 2;
-            background-color: var(--LysGrønn--);
-            border: 3px solid var(--Blå--);
-        }
-
-        .klokke {
-            grid-column: 1/2;
-            grid-row: 3/4;
-            background-color: var(--Grønn--);
-            border: 3px solid var(--Blå--);
-        }
-
-        .spillbrett {
-            grid-column: 2/3;
-            grid-row: 1/4;
-            background-color: var(--VeldigLysGrønn--);
-            position: relative;
-            border: 3px solid var(--Blå--);
-        }
-
-        .wanted {
-            font-size: 200px;
-            margin-top: 40px;
-        }
-
-        .tekst {
-            font-size: 20px;
-            margin-top: 10px;
-        }
-
-
-
-
-
-        @media (max-width: 600px) {
-            .gridContainer {
-                display: flex;
-                flex-direction: column;
-                height: 100vh;
-            }
-
-            .topVenstre,
-            .bunVenstre,
-            .klokke {
-                text-align: center;
-                padding: 5px;
-                flex: 0 0 auto;
-            }
-
-            .topVenstre h1,
-            .bunVenstre h1,
-            .klokke h1 {
-                font-size: 20px;
-            }
-
-            .topVenstre p,
-            .bunVenstre p,
-            .klokke p {
-                font-size: 14px;
-            }
-
-            .wanted {
-                font-size: 150px;
-                margin-top: 0px;
-            }
-
-            .spillbrett {
-                height: 100%;
-                width: 100%;
-                position: relative;
-            }
-
-            .ball {
-                width: 60px;
-                height: 60px;
-            }
-        }
-    </style>
+    <title>Document</title>
+    <link rel="stylesheet" href="spill.css">
 </head>
 
 <body>
     <div class="gridContainer">
         <div class="topVenstre">
-            <h1>Wanted spill</h1>
+            <h1 class="overskrift">Wanted spill</h1>
         </div>
         <div class="bunVenstre">
             <h1 class="'wantedOverskrift">Wanted</h1>
             <p class="tekst">Klikk på denne emojien før tiden går ut</p>
             <p class="wanted">👨</p>
         </div>
-        <div class="spillbrett">
-            <img src="bilder/Ansikt1.png" alt="ball" id="ball1" class="ball">
-            <img src="bilder/Ansikt2.png" alt="ball" id="ball2" class="ball">
-            <img src="bilder/Ansikt3.png" alt="ball" id="ball3" class="ball">
-            <img src="bilder/Ansikt4.png" alt="ball" id="ball4" class="ball">
-            <img src="bilder/Ansikt5.png" alt="ball" id="ball5" class="ball">
-            <img src="bilder/Ansikt6.png" alt="ball" id="ball6" class="ball">
-            <img src="bilder/Ansikt7.png" alt="ball" id="ball7" class="ball">
-            <img src="bilder/Ansikt8.png" alt="ball" id="ball8" class="ball">
-            <img src="bilder/Ansikt1.png" alt="ball" id="ball9" class="ball">
-            <img src="bilder/Ansikt2.png" alt="ball" id="ball10" class="ball">
-            <img src="bilder/Ansikt3.png" alt="ball" id="ball11" class="ball">
-            <img src="bilder/Ansikt4.png" alt="ball" id="ball12" class="ball">
-            <img src="bilder/Ansikt5.png" alt="ball" id="ball13" class="ball">
-            <img src="bilder/TargettAnsikt.png" alt="ball" id="ball14" class="ball">
-            <img src="bilder/Ansikt7.png" alt="ball" id="ball15" class="ball">
-            <img src="bilder/Ansikt8.png" alt="ball" id="ball16" class="ball">
-            <img src="bilder/Ansikt1.png" alt="ball" id="ball17" class="ball">
-            <img src="bilder/Ansikt2.png" alt="ball" id="ball18" class="ball">
-            <img src="bilder/Ansikt3.png" alt="ball" id="ball19" class="ball">
-            <img src="bilder/Ansikt4.png" alt="ball" id="ball20" class="ball">
-            <img src="bilder/Ansikt5.png" alt="ball" id="ball21" class="ball">
-            <img src="bilder/Ansikt6.png" alt="ball" id="ball22" class="ball">
-            <img src="bilder/Ansikt7.png" alt="ball" id="ball23" class="ball">
+        <div class="gridSpillbrett spillbrett">
+            <div class="boks">
+                <p class="emoji">👶</p>
+            </div>
+            <div class="boks">
+                <p class="emoji">👧</p>
+            </div>
+            <div class="boks">
+                <p class="emoji">🧒</p>
+            </div>
+            <div class="boks">
+                <p class="emoji">👦</p>
+            </div>
+            <div class="boks">
+                <a href="spill.html"><button class="btn">Klikk her for å starte Spillet</button></a>
+            </div>
+            <div class="boks">
+                <p class="emoji">👩</p>
+            </div>
+            <div class="boks">
+                <p class="emoji">🧑</p>
+            </div>
+            <div class="boks">
+                <p class="emoji">👩‍🦱</p>
+            </div>
+            <div class="boks">
+                <p class="emoji">🧑‍🦱</p>
+            </div>
         </div>
         <div class="klokke">
-            <h1>Tid: 20 Sek</h1>
+            <h1>Tid: 15 Sek</h1>
         </div>
-
-
-        <script>
-            const spillbrett = document.querySelector(".spillbrett")
-            const WIDTH = spillbrett.offsetWidth
-            const HEIGHT = spillbrett.offsetHeight
-            const target = document.querySelector("#ball14")
-
-            const baller = []
-
-            for (let i = 1; i <= 23; i++) {
-                baller.push({
-                    ballElm: document.getElementById(`ball${i}`),
-                    venstre: Math.floor(Math.random() * 200),
-                    topp: Math.floor(Math.random() * 200),
-                    x_fart: Math.floor(Math.random() * 10) + 1,
-                    y_fart: Math.floor(Math.random() * 10) + 1,
-                })
-            }
-
-
-            function tilfNyFart() {
-                return (Math.random() * 1-0.5) // Gir et tall mellom -0.5 og 0.5
-            }
-
-            function detekterKollisjon(ball) {
-                const BALL_WIDTH = ball.ballElm.offsetWidth
-                const BALL_HEIGHT = ball.ballElm.offsetHeight
-
-                if (ball.venstre >= WIDTH - BALL_WIDTH || ball.venstre <= 0) {
-                    ball.x_fart *= -1
-                    ball.x_fart += tilfNyFart()
-                }
-
-                if (ball.topp >= HEIGHT - BALL_HEIGHT || ball.topp <= 0) {
-                    ball.y_fart *= -1
-                    ball.y_fart += tilfNyFart()
-                }
-            }
-
-
-            function flyttBall(ball) {
-                // Flytt på ballen:
-                ball.venstre += ball.x_fart
-                ball.topp += ball.y_fart
-                ball.ballElm.style.left = ball.venstre + "px"
-                ball.ballElm.style.top = ball.topp + "px"
-            }
-
-            function oppdater() {
-                for (let ball of baller) {
-                    detekterKollisjon(ball)
-                    flyttBall(ball)
-                }
-
-
-                requestAnimationFrame(oppdater)
-            }
-
-            oppdater()
-
-            target.addEventListener("click", vunnetSpill)
-
-            function vunnetSpill() {
-                alert("Du vant spillet!")
-                location.reload() // Gjør at spillet restarter istedefor å fortsette etter man har vunnet
-            }
-            let tall = 20
-            let antall = document.querySelector(".klokke > h1")
-
-            let myInterval = setInterval(function () {
-                tall--
-                antall.innerHTML = "Tid: " + tall + " Sek"
-
-                if (tall === 0) {
-                    alert("Du tapte spillet!")
-                    location.reload() // Gjør at spillet restarter istedefor å fortsette etter man har tappet
-                    clearInterval(myInterval)
-                }
-            }, 1000);
-
-
-
-
-        </script>
 </body>
 
 </html>

@@ -1,4 +1,147 @@
-.gridContainer{
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+:root {
+    --MørkGrønn--: #214E34;
+    --Grønn--: #A1CDA8;
+    --LysGrønn--: #B5DFCA;
+    --VeldigLysGrønn--: #C5E7E2;
+    --Blå--: #337CA0;
+}
+
+body {
+    height: 100vh;
+    margin: 0;
+    overflow: hidden;
+}
+
+.ball {
+    width: 200px;
+    height: 200px;
+    position: absolute;
+    left: 50px;
+    top: 50px
+}
+
+.gridContainer {
     display: grid;
-    
+    grid-template-columns: 20% 80%;
+    grid-template-rows: 20% 70% 10%;
+    height: 100vh;
+    /* Full høyde på skjermen */
+}
+
+.topVenstre {
+    grid-column: 1;
+    grid-row: 1;
+    background-color: var(--Grønn--);
+    border: 3px solid var(--Blå--);
+}
+
+.bunVenstre {
+    grid-column: 1;
+    grid-row: 2;
+    background-color: var(--LysGrønn--);
+    border: 3px solid var(--Blå--);
+}
+
+.klokke {
+    grid-column: 1/2;
+    grid-row: 3/4;
+    background-color: var(--Grønn--);
+    border: 3px solid var(--Blå--);
+}
+
+.spillbrett {
+    grid-column: 2/3;
+    grid-row: 1/4;
+    background-color: var(--VeldigLysGrønn--);
+    position: relative;
+    border: 3px solid var(--Blå--);
+}
+
+.wanted {
+    font-size: 200px;
+    margin-top: 40px;
+}
+
+.tekst {
+    font-size: 20px;
+    margin-top: 10px;
+}
+
+.overskrift {
+    margin-top: 35px;
+}
+
+.boks {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.btn {
+    padding: 10px 20px;
+    font-size: 16px;
+    background-color: var(--LysGrønn--);
+    border-radius: 15px;
+}
+
+.emoji {
+    font-size: 150px;
+    text-align: center;
+}
+.gridSpillbrett {
+    display: grid;
+    grid-template-columns: 33% 33% 33%;
+    grid-template-rows: 33% 33% 33%;
+}
+
+
+
+@media (max-width: 600px) {
+    .gridContainer {
+        display: flex;
+        flex-direction: column;
+        height: 100vh;
+    }
+
+    .topVenstre,
+    .bunVenstre,
+    .klokke {
+        text-align: center;
+        padding: 5px;
+        flex: 0 0 auto;
+    }
+
+    .topVenstre h1,
+    .bunVenstre h1,
+    .klokke h1 {
+        font-size: 20px;
+    }
+
+    .topVenstre p,
+    .bunVenstre p,
+    .klokke p {
+        font-size: 14px;
+    }
+
+    .wanted {
+        font-size: 150px;
+        margin-top: 0px;
+    }
+
+    .spillbrett {
+        height: 100%;
+        width: 100%;
+        position: relative;
+    }
+
+    .ball {
+        width: 60px;
+        height: 60px;
+    }
 }
