@@ -6,6 +6,12 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>BallSprett</title>
     <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
         body {
             height: 100vh;
             margin: 0;
@@ -22,57 +28,102 @@
             left: 50px;
             top: 50px
         }
+
+        .gridContainer {
+            display: grid;
+            grid-template-columns: 20% 80%;
+            grid-template-rows: 10% 80% 10%;
+            height: 100vh;
+            /* Full høyde på skjermen */
+        }
+
+        .topVenstre {
+            grid-column: 1;
+            grid-row: 1;
+            background-color: lightblue;
+        }
+
+        .bunVenstre {
+            grid-column: 1;
+            grid-row: 2;
+            background-color: lightcoral;
+        }
+        .klokke {
+            grid-column: 1/2;
+            grid-row: 3/4;
+            background-color: rgb(174, 174, 38);
+        }
+
+        .spillbrett {
+            grid-column: 2/3;
+            grid-row: 1/4;
+            background-color: aliceblue;
+            position: relative;
+        }
+
+        .wanted {
+            font-size: 200px;
+        }
     </style>
 </head>
 
 <body>
-    <img src="ball.png" alt="ball" id="ball1" class="ball">
-    <img src="ball.png" alt="ball" id="ball2" class="ball">
-    <img src="ball.png" alt="ball" id="ball3" class="ball">
-    <img src="ball.png" alt="ball" id="ball4" class="ball">
-    <img src="ball.png" alt="ball" id="ball5" class="ball">
-    <img src="ball.png" alt="ball" id="ball6" class="ball">
-    <img src="ball.png" alt="ball" id="ball7" class="ball">
-    <img src="ball.png" alt="ball" id="ball8" class="ball">
-    <img src="ball.png" alt="ball" id="ball9" class="ball">
-    <img src="ball.png" alt="ball" id="ball10" class="ball">
-    <img src="ball.png" alt="ball" id="ball11" class="ball">
-    <img src="ball.png" alt="ball" id="ball12" class="ball">
-    <img src="ball.png" alt="ball" id="ball13" class="ball">
-    <img src="ball.png" alt="ball" id="ball14" class="ball">
-    <img src="ball.png" alt="ball" id="ball15" class="ball">
-    <img src="ball.png" alt="ball" id="ball16" class="ball">
-    <img src="ball.png" alt="ball" id="ball17" class="ball">
-    <img src="ball.png" alt="ball" id="ball18" class="ball">
-    <img src="ball.png" alt="ball" id="ball19" class="ball">
-    <img src="ball.png" alt="ball" id="ball20" class="ball">
-    <img src="ball.png" alt="ball" id="ball21" class="ball">
-    <img src="ball.png" alt="ball" id="ball22" class="ball">
-    <img src="ball.png" alt="ball" id="ball23" class="ball">
-    <img src="ball.png" alt="ball" id="ball24" class="ball">
-    <img src="ball.png" alt="ball" id="ball25" class="ball">
-    <img src="ball.png" alt="ball" id="ball26" class="ball">
-    <img src="ball.png" alt="ball" id="ball27" class="ball">
-    <img src="ball.png" alt="ball" id="ball28" class="ball">
-    <img src="ball.png" alt="ball" id="ball29" class="ball">
-    <img src="ball.png" alt="ball" id="ball30" class="ball">
+    <div class="gridContainer">
+        <div class="topVenstre">
+            <h1>Wanted spill</h1>
+            <p>Klikk på emojien som er Wanted</p>
+        </div>
+        <div class="bunVenstre">
+            <h1>Wanted</h1>
+            <p class="wanted">👨</p>
+        </div>
+        <div class="spillbrett">
+            <img src="bilder/Ansikt1.png" alt="ball" id="ball1" class="ball">
+            <img src="bilder/Ansikt2.png" alt="ball" id="ball2" class="ball">
+            <img src="bilder/Ansikt3.png" alt="ball" id="ball3" class="ball">
+            <img src="bilder/Ansikt4.png" alt="ball" id="ball4" class="ball">
+            <img src="bilder/Ansikt5.png" alt="ball" id="ball5" class="ball">
+            <img src="bilder/Ansikt6.png" alt="ball" id="ball6" class="ball">
+            <img src="bilder/Ansikt7.png" alt="ball" id="ball7" class="ball">
+            <img src="bilder/Ansikt8.png" alt="ball" id="ball8" class="ball">
+            <img src="bilder/Ansikt1.png" alt="ball" id="ball9" class="ball">
+            <img src="bilder/Ansikt2.png" alt="ball" id="ball10" class="ball">
+            <img src="bilder/Ansikt3.png" alt="ball" id="ball11" class="ball">
+            <img src="bilder/Ansikt4.png" alt="ball" id="ball12" class="ball">
+            <img src="bilder/Ansikt5.png" alt="ball" id="ball13" class="ball">
+            <img src="bilder/TargettAnsikt.png" alt="ball" id="ball14" class="ball">
+            <img src="bilder/Ansikt7.png" alt="ball" id="ball15" class="ball">
+            <img src="bilder/Ansikt8.png" alt="ball" id="ball16" class="ball">
+            <img src="bilder/Ansikt1.png" alt="ball" id="ball17" class="ball">
+            <img src="bilder/Ansikt2.png" alt="ball" id="ball18" class="ball">
+            <img src="bilder/Ansikt3.png" alt="ball" id="ball19" class="ball">
+            <img src="bilder/Ansikt4.png" alt="ball" id="ball20" class="ball">
+            <img src="bilder/Ansikt5.png" alt="ball" id="ball21" class="ball">
+            <img src="bilder/Ansikt6.png" alt="ball" id="ball22" class="ball">
+            <img src="bilder/Ansikt7.png" alt="ball" id="ball23" class="ball">
+        </div>
+        <div class="klokke">
+            <h1>Tid: 0</h1>
+    </div>
 
 
     <script>
-        const WIDTH = document.body.offsetWidth
-        const HEIGHT = document.body.offsetHeight
+        const spillbrett = document.querySelector(".spillbrett")
+        const WIDTH = spillbrett.offsetWidth
+        const HEIGHT = spillbrett.offsetHeight
+        const target = document.querySelector("#ball14")
 
-        const baller = [];
+        const baller = []
 
-for (let i = 1; i <= 30; i++) {
-    baller.push({
-        ballElm: document.getElementById(`ball${i}`),
-        venstre: Math.floor(Math.random() * 200),
-        topp: Math.floor(Math.random() * 200),
-        x_fart: Math.floor(Math.random() * 10) + 1,
-        y_fart: Math.floor(Math.random() * 10) + 1,
-    })
-}
+        for (let i = 1; i <= 23; i++) {
+            baller.push({
+                ballElm: document.getElementById(`ball${i}`),
+                venstre: Math.floor(Math.random() * 200),
+                topp: Math.floor(Math.random() * 200),
+                x_fart: Math.floor(Math.random() * 10) + 1,
+                y_fart: Math.floor(Math.random() * 10) + 1,
+            })
+        }
 
 
         function tilfNyFart() {
@@ -115,6 +166,11 @@ for (let i = 1; i <= 30; i++) {
 
         oppdater()
 
+        target.addEventListener("click", vunnetSpill)
+
+        function vunnetSpill() {
+            alert("Du vant spillet!")
+        }
     </script>
 </body>
 

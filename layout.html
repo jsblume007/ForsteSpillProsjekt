@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -11,41 +12,48 @@
             padding: 0;
             box-sizing: border-box;
         }
+
         .gridContainer {
             display: grid;
-            grid-template-columns: auto auto auto;
-            grid-template-rows: ;
-            grid-gap: 10px;
-            padding: 10px;
-            background-color: #2196F3;
-            color: white;
+            grid-template-columns: 20% 80%;
+            grid-template-rows: 20% 80%;
+            height: 100vh;
+            /* Full høyde på skjermen */
         }
 
-        h1 {
-            font-size: 24px;
+        .topVenstre {
+            grid-column: 1;
+            grid-row: 1;
+            background-color: lightblue;
         }
 
-        p {
-            font-size: 18px;
+        .bunVenstre {
+            grid-column: 1;
+            grid-row: 2;
+            background-color: lightcoral;
+        }
+
+        .bunHøyre {
+           grid-column: 2/3;
+           grid-row: 1/3;
+            background-color: rgb(174, 174, 38);
         }
     </style>
 </head>
+
 <body>
 
-        <div class="gridContainer">
-            <div>
-                <h1>Wanted spill</h1>
-                <p>klikk på emojien som er Wanted</p>
-            </div>
-            <div>
-                <p>klikk på denne emojien:</p>
-                <p>👨</p>
-            </div>
-            <div id="spillBrett"></div>
+    <div class="gridContainer">
+        <div class="topVenstre">
+            <h1>Wanted spill</h1>
+            <p>klikk på emojien som er Wanted</p>
         </div>
-
-
-
-    <script src="spill.js"></script>
+        <div class="bunVenstre">
+            <p>klikk på denne emojien:</p>
+            <p>👨</p>
+        </div>
+        <div class="bunHøyre"></div>
+    </div>
 </body>
+
 </html>
