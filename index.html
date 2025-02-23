@@ -12,6 +12,14 @@
             box-sizing: border-box;
         }
 
+        :root {
+            --MørkGrønn--: #214E34;
+            --Grønn--: #A1CDA8;
+            --LysGrønn--: #B5DFCA;
+            --VeldigLysGrønn--: #C5E7E2;
+            --Blå--: #337CA0;
+        }
+
         body {
             height: 100vh;
             margin: 0;
@@ -32,7 +40,7 @@
         .gridContainer {
             display: grid;
             grid-template-columns: 20% 80%;
-            grid-template-rows: 10% 80% 10%;
+            grid-template-rows: 20% 70% 10%;
             height: 100vh;
             /* Full høyde på skjermen */
         }
@@ -40,29 +48,88 @@
         .topVenstre {
             grid-column: 1;
             grid-row: 1;
-            background-color: lightblue;
+            background-color: var(--Grønn--);
+            border: 3px solid var(--Blå--);
         }
 
         .bunVenstre {
             grid-column: 1;
             grid-row: 2;
-            background-color: lightcoral;
+            background-color: var(--LysGrønn--);
+            border: 3px solid var(--Blå--);
         }
+
         .klokke {
             grid-column: 1/2;
             grid-row: 3/4;
-            background-color: rgb(174, 174, 38);
+            background-color: var(--Grønn--);
+            border: 3px solid var(--Blå--);
         }
 
         .spillbrett {
             grid-column: 2/3;
             grid-row: 1/4;
-            background-color: aliceblue;
+            background-color: var(--VeldigLysGrønn--);
             position: relative;
+            border: 3px solid var(--Blå--);
         }
 
         .wanted {
             font-size: 200px;
+            margin-top: 40px;
+        }
+
+        .tekst {
+            font-size: 20px;
+            margin-top: 10px;
+        }
+
+
+
+
+
+        @media (max-width: 600px) {
+            .gridContainer {
+                display: flex;
+                flex-direction: column;
+                height: 100vh;
+            }
+
+            .topVenstre,
+            .bunVenstre,
+            .klokke {
+                text-align: center;
+                padding: 5px;
+                flex: 0 0 auto;
+            }
+
+            .topVenstre h1,
+            .bunVenstre h1,
+            .klokke h1 {
+                font-size: 20px;
+            }
+
+            .topVenstre p,
+            .bunVenstre p,
+            .klokke p {
+                font-size: 14px;
+            }
+
+            .wanted {
+                font-size: 150px;
+                margin-top: 0px;
+            }
+
+            .spillbrett {
+                height: 100%;
+                width: 100%;
+                position: relative;
+            }
+
+            .ball {
+                width: 60px;
+                height: 60px;
+            }
         }
     </style>
 </head>
@@ -71,10 +138,10 @@
     <div class="gridContainer">
         <div class="topVenstre">
             <h1>Wanted spill</h1>
-            <p>Klikk på emojien som er Wanted</p>
         </div>
         <div class="bunVenstre">
-            <h1>Wanted</h1>
+            <h1 class="'wantedOverskrift">Wanted</h1>
+            <p class="tekst">Klikk på denne emojien før tiden går ut</p>
             <p class="wanted">👨</p>
         </div>
         <div class="spillbrett">
@@ -103,75 +170,93 @@
             <img src="bilder/Ansikt7.png" alt="ball" id="ball23" class="ball">
         </div>
         <div class="klokke">
-            <h1>Tid: 0</h1>
-    </div>
+            <h1>Tid: 20 Sek</h1>
+        </div>
 
 
-    <script>
-        const spillbrett = document.querySelector(".spillbrett")
-        const WIDTH = spillbrett.offsetWidth
-        const HEIGHT = spillbrett.offsetHeight
-        const target = document.querySelector("#ball14")
+        <script>
+            const spillbrett = document.querySelector(".spillbrett")
+            const WIDTH = spillbrett.offsetWidth
+            const HEIGHT = spillbrett.offsetHeight
+            const target = document.querySelector("#ball14")
 
-        const baller = []
+            const baller = []
 
-        for (let i = 1; i <= 23; i++) {
-            baller.push({
-                ballElm: document.getElementById(`ball${i}`),
-                venstre: Math.floor(Math.random() * 200),
-                topp: Math.floor(Math.random() * 200),
-                x_fart: Math.floor(Math.random() * 10) + 1,
-                y_fart: Math.floor(Math.random() * 10) + 1,
-            })
-        }
-
-
-        function tilfNyFart() {
-            return (Math.random() * 2 - 1); // Gir et tall mellom -1 og 1
-        }
-
-        function detekterKollisjon(ball) {
-            const BALL_WIDTH = ball.ballElm.offsetWidth
-            const BALL_HEIGHT = ball.ballElm.offsetHeight
-
-            if (ball.venstre >= WIDTH - BALL_WIDTH || ball.venstre <= 0) {
-                ball.x_fart *= -1
-                ball.x_fart += tilfNyFart()
-            }
-
-            if (ball.topp >= HEIGHT - BALL_HEIGHT || ball.topp <= 0) {
-                ball.y_fart *= -1
-                ball.y_fart += tilfNyFart()
-            }
-        }
-
-
-        function flyttBall(ball) {
-            // Flytt på ballen:
-            ball.venstre += ball.x_fart
-            ball.topp += ball.y_fart
-            ball.ballElm.style.left = ball.venstre + "px"
-            ball.ballElm.style.top = ball.topp + "px"
-        }
-
-        function oppdater() {
-            for (let ball of baller) {
-                detekterKollisjon(ball)
-                flyttBall(ball)
+            for (let i = 1; i <= 23; i++) {
+                baller.push({
+                    ballElm: document.getElementById(`ball${i}`),
+                    venstre: Math.floor(Math.random() * 200),
+                    topp: Math.floor(Math.random() * 200),
+                    x_fart: Math.floor(Math.random() * 10) + 1,
+                    y_fart: Math.floor(Math.random() * 10) + 1,
+                })
             }
 
 
-            requestAnimationFrame(oppdater)
-        }
+            function tilfNyFart() {
+                return (Math.random() * 1-0.5) // Gir et tall mellom -0.5 og 0.5
+            }
 
-        oppdater()
+            function detekterKollisjon(ball) {
+                const BALL_WIDTH = ball.ballElm.offsetWidth
+                const BALL_HEIGHT = ball.ballElm.offsetHeight
 
-        target.addEventListener("click", vunnetSpill)
+                if (ball.venstre >= WIDTH - BALL_WIDTH || ball.venstre <= 0) {
+                    ball.x_fart *= -1
+                    ball.x_fart += tilfNyFart()
+                }
 
-        function vunnetSpill() {
-            alert("Du vant spillet!")
-        }
-    </script>
+                if (ball.topp >= HEIGHT - BALL_HEIGHT || ball.topp <= 0) {
+                    ball.y_fart *= -1
+                    ball.y_fart += tilfNyFart()
+                }
+            }
+
+
+            function flyttBall(ball) {
+                // Flytt på ballen:
+                ball.venstre += ball.x_fart
+                ball.topp += ball.y_fart
+                ball.ballElm.style.left = ball.venstre + "px"
+                ball.ballElm.style.top = ball.topp + "px"
+            }
+
+            function oppdater() {
+                for (let ball of baller) {
+                    detekterKollisjon(ball)
+                    flyttBall(ball)
+                }
+
+
+                requestAnimationFrame(oppdater)
+            }
+
+            oppdater()
+
+            target.addEventListener("click", vunnetSpill)
+
+            function vunnetSpill() {
+                alert("Du vant spillet!")
+                location.reload() // Gjør at spillet restarter istedefor å fortsette etter man har vunnet
+            }
+            let tall = 20
+            let antall = document.querySelector(".klokke > h1")
+
+            let myInterval = setInterval(function () {
+                tall--
+                antall.innerHTML = "Tid: " + tall + " Sek"
+
+                if (tall === 0) {
+                    alert("Du tapte spillet!")
+                    location.reload() // Gjør at spillet restarter istedefor å fortsette etter man har tappet
+                    clearInterval(myInterval)
+                }
+            }, 1000);
+
+
+
+
+        </script>
 </body>
 
 </html>
