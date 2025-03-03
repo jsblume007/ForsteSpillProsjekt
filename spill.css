@@ -23,7 +23,11 @@ body {
     height: 200px;
     position: absolute;
     left: 50px;
-    top: 50px
+    top: 50px;
+    pointer-events: none;
+}
+.ball.target{
+    pointer-events: all;
 }
 
 .gridContainer {
